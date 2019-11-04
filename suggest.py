@@ -11,15 +11,15 @@ app = Flask(__name__)
 def root():
     return jsonify({"message": "Hello World!"})
 
-@app.route('/info/')
+@app.route('/info')
 def info():
     return jsonify({"message": "info: TBD"})
 
-@app.route('/health/')
+@app.route('/health')
 def health():
     return jsonify({"message": "health: TBD"})
 
-@app.route('/suggest/')
+@app.route('/suggest')
 def suggest():
     ss = request.args.get('letters', default='hello')
     perms = []
@@ -40,4 +40,5 @@ def suggest():
     return jd
 
 if __name__ == '__main__':
- app.run()
+    #app.run()
+    app.run(debug=True)
