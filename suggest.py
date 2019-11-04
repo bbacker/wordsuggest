@@ -26,7 +26,8 @@ def suggest_strings():
             perms.append(w)
 
     spell = SpellChecker( distance=1 )
-    w = list(spell.known( perms ))
+    k = spell.known( perms )
+    w = sort(list(k))
     resultm = {"letters": ss ,"words" : w}
     returnjson.dumps(resultm)
 
