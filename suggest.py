@@ -5,13 +5,19 @@ from spellchecker import SpellChecker
 import json
 
 
-#print('\n'.join( sorted(known) ))
-
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
     return jsonify({"message": "Hello World!"})
+
+@app.route('/info/')
+def info():
+    return jsonify({"message": "info: TBD"})
+
+@app.route('/health/')
+def health():
+    return jsonify({"message": "health: TBD"})
 
 @app.route('/suggest/')
 def suggest_strings():
@@ -19,7 +25,7 @@ def suggest_strings():
     perms = []
 
     for l in range(3, len(ss)+1):
-        print(l)
+        #print(l)
         perm = permutations( list(ss), l)
         for i in perm:
             w = ''.join(i)
@@ -27,9 +33,14 @@ def suggest_strings():
 
     spell = SpellChecker( distance=1 )
     k = spell.known( perms )
-    w = sort(list(k))
-    resultm = {"letters": ss ,"words" : w}
-    returnjson.dumps(resultm)
+    w = sorted(list(k))
+    rmap = {"letters": ss ,"words" : w}
+
+    #pl = sorted(list(perms))
+    #resultm = {"letters": ss ,"words" : w, "permutations" : pl}
+    jd = json.dumps(rmap)
+    print(jd)
+    return jd
 
 if __name__ == '__main__':
  app.run()
