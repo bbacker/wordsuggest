@@ -8,7 +8,7 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def root():
     return jsonify({"message": "Hello World!"})
 
 @app.route('/info/')
@@ -20,7 +20,7 @@ def health():
     return jsonify({"message": "health: TBD"})
 
 @app.route('/suggest/')
-def suggest_strings():
+def suggest():
     ss = request.args.get('letters', default='hello')
     perms = []
 
@@ -35,9 +35,6 @@ def suggest_strings():
     k = spell.known( perms )
     w = sorted(list(k))
     rmap = {"letters": ss ,"words" : w}
-
-    #pl = sorted(list(perms))
-    #resultm = {"letters": ss ,"words" : w, "permutations" : pl}
     jd = json.dumps(rmap)
     print(jd)
     return jd
