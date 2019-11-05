@@ -13,6 +13,8 @@ local run
 
     curl -s http://127.0.0.1:5000/suggest/?letters="bob" | jq -r .words[]
 
+    curl -s http://127.0.0.1:5000/suggest/?letters="mcaeakl" | jq -r .words[]
+
 
 remote deploy w zappa
 
