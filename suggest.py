@@ -1,11 +1,14 @@
 # from https://dev.to/apcelent/deploying-flask-on-aws-lambda-4k42
 from flask import Flask, jsonify, request
+from flask_cors import CORS
+
 from itertools import permutations
 from spellchecker import SpellChecker
 import json
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def root():
