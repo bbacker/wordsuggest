@@ -1,7 +1,13 @@
 # wordsuggest
 suggest dictionary words based on given set of letters
 
-build
+docker build and run
+
+    docker build -t suggest:latest .
+
+    docker run --rm -it suggest:latest
+
+local build
 
     (assumed you have pyenv and pyenv virtualenv installed)`
 
@@ -17,6 +23,11 @@ local run
 
     curl -s http://127.0.0.1:5000/suggest?letters="mcaeakl" | jq -r .words[]
 
+tests
+
+    curl -v http://127.0.0.1:5000/info
+
+    curl -v http://127.0.0.1:5000/health
 
 remote deploy w zappa
 
@@ -29,8 +40,4 @@ remote deploy w zappa
 exit project
 
     pyenv deactivate
-
-docker build -t suggest:latest .
-
-docker run --rm -it suggest:latest
 
