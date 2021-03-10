@@ -29,3 +29,8 @@ remote deploy w zappa
 exit project
 
     pyenv deactivate
+
+docker build -t suggest:latest .
+
+docker run --rm -it suggest:latest
+
