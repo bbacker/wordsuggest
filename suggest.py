@@ -27,6 +27,10 @@ def suggest():
     ss = request.args.get('letters', default='hello')
     perms = []
 
+    # support up to 7 letters
+    ss = ss[:7]
+    print(ss)
+
     for l in range(3, len(ss)+1):
         #print(l)
         perm = permutations( list(ss), l)

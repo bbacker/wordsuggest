@@ -5,7 +5,7 @@ docker build and run
 
     docker build -t suggest:latest .
 
-    docker run --rm -it suggest:latest
+    docker run --rm -p5000:5000 -it suggest:latest
 
 local build
 
